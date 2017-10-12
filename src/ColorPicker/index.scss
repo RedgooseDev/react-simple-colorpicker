@@ -48,6 +48,7 @@
 
 
 .cpMap {
+	touch-action: none;
 	&-active {
 		cursor: none;
 	}
@@ -125,6 +126,7 @@
 	position: relative;
 	user-select: none;
 	cursor: ew-resize;
+	touch-action: none;
 
 	&__track {
 		position: relative;
