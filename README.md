@@ -26,6 +26,8 @@ class App extends React.Component {
 		initialColor: '#ffffff'
 	};
 
+	colorPicker = null;
+
 	constructor(props) {
 		super();
 
@@ -37,6 +39,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<ColorPicker
+				ref={(r) => { this.colorPicker = r; }}
 				color={this.state.color}
 				onChange={(color) => this.setState({ color: color })}
 				//paletteColors={[]}
@@ -52,4 +55,32 @@ ReactDOM.render(<App initialColor="#ffffff" />, document.querySelector("#app"));
 
 ```javascript
 @import '~react-simple-colorpicker/src/ColorPicker/index.scss';
+```
+
+
+## Props
+
+### color
+
+- type: `String`
+
+Selected color
+
+### paletteColors
+
+- type: `Array`
+
+Palette colors array
+
+### onChange
+
+- type: `Function`
+
+
+## Methods
+
+### changeColor
+
+```javascript
+colorPicker.changeColor('#ff0000');
 ```

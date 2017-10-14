@@ -12,11 +12,12 @@ module.exports = {
 	output: {
 		path: __dirname + '/build',
 		filename: '[name].js',
-		libraryTarget: 'umd',
 		library: 'ColorPicker',
+		libraryTarget: 'umd',
+		libraryExport: 'default'
 	},
 
-	devtool: 'source-map',
+	devtool: false,
 
 	externals: {
 		"react": {
@@ -30,18 +31,6 @@ module.exports = {
 			"commonjs2": "react-dom",
 			"amd": "react-dom",
 			"root": "ReactDOM"
-		},
-		"classnames": {
-			"commonjs": "classnames",
-			"commonjs2": "classnames",
-			"amd": "classnames",
-			"root": "classNames"
-		},
-		"prop-types": {
-			"commonjs": "prop-types",
-			"commonjs2": "prop-types",
-			"amd": "prop-types",
-			"root": "PropTypes"
 		}
 	},
 
@@ -76,7 +65,10 @@ module.exports = {
 			}
 		}),
 		// Compress, but don't print warnings to console
-		new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}, sourceMap: true})
+		new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}, sourceMap: true}),
+		new ExtractTextPlugin({
+			filename: '[name].css'
+		})
 	]
 
 };

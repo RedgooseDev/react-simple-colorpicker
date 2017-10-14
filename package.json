@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack-dev.config.js --env=dev --host 0.0.0.0 --port 3000",
+    "prebuild": "rm -rf build/",
     "build": "webpack --config webpack.config.js -p --progress",
     "version-patch": "npm version patch"
   },
@@ -26,8 +27,8 @@
     "node": ">=7.8.0"
   },
   "author": {
-    "name": "Nick Williams",
-    "url": "http://wicky.nillia.ms"
+    "name": "Nick Williams(updated by Redgoose)",
+    "url": "http://wicky.nillia.ms (updated by http://redgoose.me)"
   },
   "license": "MIT",
   "bugs": {
@@ -41,9 +42,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.6.0",
-    "pure-color": "^1.3.0",
-    "react": "16.0.0",
-    "react-dom": "16.0.0"
+    "pure-color": "^1.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -58,6 +57,8 @@
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.7",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",

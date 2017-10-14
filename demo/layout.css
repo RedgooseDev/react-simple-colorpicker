@@ -1,0 +1,70 @@
+body {
+	margin: 0;
+	padding: 20px;
+	background: #fff;
+	font-size: 20px;
+}
+
+
+.layout-header {
+	margin: 0;
+}
+.layout-header h1 {
+	margin: 0;
+	font-size: 30px;
+	color: #d73d7d;
+}
+.layout-header p {
+	margin: 5px 0 0;
+	font-size: 14px;
+	color: #555;
+}
+
+
+.demo {
+	margin: 50px 0 0;
+}
+.demo__colorPicker {
+	padding: 40px 0;
+	background: #f4f4f4;
+}
+.demo .colorpicker {
+	margin: 0 auto;
+}
+
+
+.code {
+	margin: 30px 0 0;
+}
+.code h1 {
+	margin: 0;
+	font-size: 20px;
+	color: #222;
+}
+.code__fields {
+	margin: 8px 0 0;
+}
+.code label {
+	margin: 0 0 0 15px;
+	font-size: 0;
+}
+.code label:first-child {
+	margin-left: 0;
+}
+.code label > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+.code label span {
+	margin: 0 8px 0 0;
+	font-size: 16px;
+	color: #666;
+}
+.code label input {
+	margin: 0;
+	padding: 8px 10px;
+	border: none;
+	background: #f1f1f1;
+	border-radius: 0;
+	font-size: 16px;
+}

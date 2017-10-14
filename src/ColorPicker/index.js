@@ -8,6 +8,8 @@ import Palette from './Palette';
 
 import * as lib from "./lib";
 
+import './index.scss';
+
 
 export default class ColorPicker extends React.Component {
 
@@ -103,6 +105,21 @@ export default class ColorPicker extends React.Component {
 		const { props } = this;
 		this.setState({ color : c });
 		props.onChange(lib.color.toRgbString(c));
+	}
+
+	/**
+	 * Change color
+	 *
+	 * @param {String} color - hex color
+	 */
+	changeColor(color)
+	{
+		const nextColor = lib.color.parseToHsv(color);
+
+		if (!lib.color.equals(this.state.color, nextColor))
+		{
+			this.setState({ color: nextColor });
+		}
 	}
 
 	render()
