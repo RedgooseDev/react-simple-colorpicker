@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import ColorSwatch from './ColorSwatch';
 import ColorPicker from '../ColorPicker';
 
+import '../ColorPicker/index.scss';
 import './index.scss';
 
 

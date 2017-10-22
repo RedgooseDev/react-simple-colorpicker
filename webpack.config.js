@@ -6,11 +6,12 @@ module.exports = {
 	context: __dirname,
 
 	entry: {
-		'ColorPicker': './src/ColorPicker/index.js'
+		'ColorPicker': './src/export.js'
 	},
 
 	output: {
 		path: __dirname + '/build',
+		publicPath: './',
 		filename: '[name].js',
 		library: 'ColorPicker',
 		libraryTarget: 'umd',
@@ -20,18 +21,8 @@ module.exports = {
 	devtool: false,
 
 	externals: {
-		"react": {
-			"commonjs": "react",
-			"commonjs2": "react",
-			"amd": "react",
-			"root": "React"
-		},
-		"react-dom": {
-			"commonjs": "react-dom",
-			"commonjs2": "react-dom",
-			"amd": "react-dom",
-			"root": "ReactDOM"
-		}
+		react: 'React',
+		'react-dom': 'ReactDOM'
 	},
 
 	module: {

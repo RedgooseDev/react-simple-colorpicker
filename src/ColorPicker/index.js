@@ -8,8 +8,6 @@ import Palette from './Palette';
 
 import * as lib from "./lib";
 
-import './index.scss';
-
 
 export default class ColorPicker extends React.Component {
 

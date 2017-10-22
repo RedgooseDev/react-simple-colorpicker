@@ -2,16 +2,16 @@
   "name": "react-simple-colorpicker",
   "version": "1.5.10",
   "description": "Colorpicker for React",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack-dev.config.js --env=dev --host 0.0.0.0 --port 3000",
-    "prebuild": "rm -rf build/",
+    "prebuild": "rm -rf build/ && rm -rf lib/ && babel ./src/ColorPicker --out-dir ./lib",
     "build": "webpack --config webpack.config.js -p --progress",
     "version-patch": "npm version patch"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/WickyNilliams/react-simple-colorpicker"
+    "url": "git+https://github.com/RedgooseDev/react-simple-colorpicker.git"
   },
   "keywords": [
     "react",
@@ -46,11 +46,12 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "chunk-manifest-webpack-plugin": "^1.1.2",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.1",
