@@ -18,15 +18,16 @@ class ColorPicker extends React.Component {
 		};
 	}
 
-	componentWillReceiveProps(nextProps)
+	static getDerivedStateFromProps(nextProps, prevState)
 	{
-		const { state } = this;
 		const nextColor = lib.color.parseToHsv(nextProps.color);
-
-		if (!lib.color.equals(state.color, nextColor))
+		if (!lib.color.equals(prevState.color, nextColor))
 		{
-			this.setState({ color: nextColor });
+			return {
+				color: nextColor,
+			};
 		}
+		return null;
 	}
 
 	/**
