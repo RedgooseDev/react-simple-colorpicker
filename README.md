@@ -6,8 +6,8 @@
 Via yarn:
 
 ```bash
-npm install --save github:RedgooseDev/react-simple-colorpicker
-yarn add github:RedgooseDev/react-simple-colorpicker
+npm install --save github:redgoose-dev/react-simple-colorpicker
+yarn add github:redgoose-dev/react-simple-colorpicker
 ```
 
 

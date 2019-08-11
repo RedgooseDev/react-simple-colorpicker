@@ -1,48 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import Slider from "./Slider";
 import Map from "./Map";
 import Palette from './Palette';
-
 import * as lib from "./lib";
 
 
-export default class ColorPicker extends React.Component {
-
-	static propTypes = {
-		color : PropTypes.string.isRequired,
-		onChange : PropTypes.func.isRequired
-	};
-
-	static defaultProps = {
-		color: "rgba(0,0,0,1)",
-		onChange: (color) => {},
-		paletteColors: [
-			'#D0011B',
-			'#F6A623',
-			'#F8E81C',
-			'#8B572A',
-			'#7ED321',
-			'#417505',
-			'#BD0FE1',
-			'#9012FE',
-			'#4990E2',
-			'#50E3C2',
-			'#B8E986',
-			'#000000',
-			'#4A4A4A',
-			'#9B9B9B',
-			'#FFFFFF',
-			'#B31F37'
-		],
-		className: null,
-	};
+class ColorPicker extends React.Component {
 
 	constructor(props)
 	{
-		super();
+		super(props);
 
 		this.state = {
 			color: lib.color.parseToHsv(props.color)
@@ -178,3 +147,33 @@ export default class ColorPicker extends React.Component {
 	}
 
 }
+ColorPicker.propTypes = {
+	color : PropTypes.string.isRequired,
+	onChange : PropTypes.func.isRequired
+};
+ColorPicker.defaultProps = {
+	color: "rgba(0,0,0,1)",
+	onChange: (color) => {},
+	paletteColors: [
+		'#D0011B',
+		'#F6A623',
+		'#F8E81C',
+		'#8B572A',
+		'#7ED321',
+		'#417505',
+		'#BD0FE1',
+		'#9012FE',
+		'#4990E2',
+		'#50E3C2',
+		'#B8E986',
+		'#000000',
+		'#4A4A4A',
+		'#9B9B9B',
+		'#FFFFFF',
+		'#B31F37'
+	],
+	className: null,
+};
+
+
+export default ColorPicker;

@@ -1,65 +1,118 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const config = (env, options) => {
+  const isDev = options.mode === 'development';
 
-module.exports = {
-	context: __dirname,
+  // base
+  let out = {
+    mode: isDev ? 'development' : 'production',
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+          }
+        },
+        {
+          test: /\.s?css$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: isDev,
+              },
+            },
+            'css-loader',
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.(jpg|png)$/,
+          loader: 'file-loader',
+          options: {
+            publicPath: './',
+            name: '[name].[ext]',
+            limit: 10000,
+          },
+        },
+      ],
+    },
+    plugins: [
+      new MiniCssExtractPlugin({ filename: '[name].css' }),
+    ],
+    optimization: {},
+  };
 
-	entry: {
-		'ColorPicker': './src/export.js'
-	},
+  if (isDev)
+  {
+    /**
+     * Development
+     */
+    out.entry = {
+      ColorPicker: './src/example/index.js'
+    };
+    out.output = {
+      publicPath: '/',
+      filename: '[name].js',
+      chunkFilename: '[name].js',
+    };
+    out.module.rules.push({
+      test: /\.html$/,
+      use: [
+        {
+          loader: "html-loader",
+          options: { minimize: false }
+        }
+      ]
+    });
+    out.devtool = 'cheap-eval-source-map';
+    out.devServer = {
+      hot: true,
+      host: '0.0.0.0',
+      port: options.port || 3000,
+      stats: {
+        color: true,
+      },
+      historyApiFallback: true,
+      noInfo: true,
+    };
+    out.plugins.push(new HtmlWebpackPlugin({
+      template: './src/example/index.html',
+    }));
+  }
+  else
+  {
+    /**
+     * Production
+     */
+    out.entry = {
+      ColorPicker: './src/export.js'
+    };
+    out.output = {
+      path: __dirname + '/build',
+      filename: '[name].js',
+      publicPath: './',
+      library: '[name]',
+      libraryTarget: 'umd',
+      libraryExport: 'default'
+    };
+    out.externals = {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    };
+    out.optimization.minimizer = [
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({}),
+    ];
+  }
 
-	output: {
-		path: __dirname + '/build',
-		publicPath: './',
-		filename: '[name].js',
-		library: 'ColorPicker',
-		libraryTarget: 'umd',
-		libraryExport: 'default'
-	},
-
-	devtool: false,
-
-	externals: {
-		react: 'React',
-		'react-dom': 'ReactDOM'
-	},
-
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				use: [ 'babel-loader' ],
-				exclude: /node_modules/
-			},
-			{
-				test: /\.s?css$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [
-						'css-loader',
-						{
-							loader: 'postcss-loader',
-							options: { plugins: () => [ require('autoprefixer') ] }
-						},
-						'sass-loader'
-					]
-				})
-			},
-		]
-	},
-
-	plugins: [
-		new webpack.DefinePlugin({
-			"process.env": {
-				NODE_ENV: JSON.stringify("production")
-			}
-		}),
-		// Compress, but don't print warnings to console
-		new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}, sourceMap: true}),
-		new ExtractTextPlugin({
-			filename: '[name].css'
-		})
-	]
-
+  return out;
 };
+
+module.exports = config;

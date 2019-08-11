@@ -2,13 +2,7 @@ import React from "react";
 import classNames from "classnames";
 
 
-export default class Item extends React.Component {
-
-	static defaultProps = {
-		selected: false,
-		onClick: (id) => {},
-		id: null,
-	};
+class Item extends React.Component {
 
 	_onClick(e)
 	{
@@ -31,3 +25,11 @@ export default class Item extends React.Component {
 	}
 
 }
+Item.defaultProps = {
+	selected: false,
+	onClick: (id) => {},
+	id: null,
+};
+
+
+export default Item;

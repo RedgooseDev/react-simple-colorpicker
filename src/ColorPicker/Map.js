@@ -2,29 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import * as lib from "./lib";
 
 
-export default class Map extends React.Component {
-
-	static propTypes = {
-		x : PropTypes.number.isRequired,
-		y : PropTypes.number.isRequired,
-		backgroundColor : PropTypes.string,
-		className : PropTypes.string
-	};
-
-	static defaultProps = {
-		x : 0,
-		y : 0,
-		backgroundColor : "transparent",
-		className : null
-	};
+class Map extends React.Component {
 
 	constructor(props)
 	{
-		super();
+		super(props);
 
 		this.state = {
 			active: false,
@@ -178,3 +163,18 @@ export default class Map extends React.Component {
 	}
 
 }
+Map.propTypes = {
+	x : PropTypes.number.isRequired,
+	y : PropTypes.number.isRequired,
+	backgroundColor : PropTypes.string,
+	className : PropTypes.string
+};
+Map.defaultProps = {
+	x : 0,
+	y : 0,
+	backgroundColor : "transparent",
+	className : null
+};
+
+
+export default Map;

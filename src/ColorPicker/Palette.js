@@ -2,13 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 
-export default class Palette extends React.Component {
-
-	static defaultProps = {
-		colors: [],
-		onSelectColor: (color) => {},
-		className: null,
-	};
+class Palette extends React.Component {
 
 	shouldComponentUpdate(nextProps, nextState)
 	{
@@ -66,3 +60,11 @@ export default class Palette extends React.Component {
 	}
 
 }
+Palette.defaultProps = {
+	colors: [],
+	onSelectColor: (color) => {},
+	className: null,
+};
+
+
+export default Palette;

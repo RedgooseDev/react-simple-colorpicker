@@ -2,26 +2,14 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import * as lib from "./lib";
 
 
-export default class Slider extends React.Component {
-
-	static propTypes = {
-		value: PropTypes.number.isRequired,
-		background : PropTypes.string
-	};
-
-	static defaultProps = {
-		value : 0,
-		background : '',
-		className: null
-	};
+class Slider extends React.Component {
 
 	constructor(props)
 	{
-		super();
+		super(props);
 
 		this._self = null;
 		this.rect = null;
@@ -155,3 +143,15 @@ export default class Slider extends React.Component {
 	}
 
 }
+Slider.propTypes = {
+	value: PropTypes.number.isRequired,
+	background : PropTypes.string
+};
+Slider.defaultProps = {
+	value : 0,
+	background : '',
+	className: null
+};
+
+
+export default Slider;

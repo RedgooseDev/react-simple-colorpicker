@@ -1,16 +1,8 @@
 import React from "react";
-import classNames from "classnames";
-
 import Item from './Item';
 
 
-export default class ColorSwatch extends React.Component {
-
-	static defaultProps = {
-		colors: [],
-		selected: null,
-		onSelect: () => {}
-	};
+class ColorSwatch extends React.Component {
 
 	render()
 	{
@@ -33,3 +25,11 @@ export default class ColorSwatch extends React.Component {
 	}
 
 }
+ColorSwatch.defaultProps = {
+	colors: [],
+	selected: null,
+	onSelect: () => {}
+};
+
+
+export default ColorSwatch;
