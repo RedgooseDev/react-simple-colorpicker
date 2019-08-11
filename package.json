@@ -2,7 +2,7 @@
   "name": "react-simple-colorpicker",
   "version": "1.5.12",
   "description": "Colorpicker for React",
-  "main": "src/ColorPicker/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "dev": "node_modules/.bin/webpack-dev-server --mode development --port 4000",
     "prebuild": "rm -rf build/ && rm -rf lib/ && rm -rf docs/build/ && node_modules/.bin/babel ./src/ColorPicker --out-dir ./lib",
